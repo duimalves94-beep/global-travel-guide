@@ -1,0 +1,16 @@
+earth-day.jpg
+  NASA Blue Marble imagery, distributed with the three-globe examples.
+  NASA imagery is in the public domain.
+
+earth-topology.png
+  Earth bump / topography map distributed with the three-globe examples.
+
+earth-clouds.png
+  Cloud map used by the globe.gl clouds example, originally published with
+  https://github.com/turban/webgl-earth
+  Resized and re-encoded for this site.
+
+countries.geojson
+  Simplified from Natural Earth 1:110m Cultural Vectors, Admin 0 – Countries.
+  Natural Earth data is in the public domain.
+  https://www.naturalearthdata.com/
