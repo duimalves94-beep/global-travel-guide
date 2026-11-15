@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>全球旅行指南</title>
+    <meta
+      name="description"
+      content="在一颗可以旋转的地球上查看各国城市、景点、最佳时节和旅行贴士。"
+    />
+    <meta name="theme-color" content="#8eacbe" />
+    <link rel="icon" href="%BASE_URL%favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <div id="sky" aria-hidden="true">
+      <span class="cloud c1"></span>
+      <span class="cloud c2"></span>
+      <span class="cloud c3"></span>
+      <span class="cloud c4"></span>
+      <span class="cloud c5"></span>
+      <svg class="grain" aria-hidden="true">
+        <filter id="grain">
+          <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch" />
+        </filter>
+        <rect width="100%" height="100%" filter="url(#grain)" />
+      </svg>
+    </div>
+
+    <div id="globe" role="img" aria-label="可旋转的三维地球。拖拽旋转，滚轮缩放，点击国家打开旅行指南。"></div>
+    <div id="vignette" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <div class="brand glass">
+        <p class="eyebrow">Global Travel Guide</p>
+        <h1>全球旅行指南</h1>
+      </div>
+
+      <form class="search glass" role="search" id="search-form">
+        <label class="sr-only" for="q">搜索国家、城市或景点</label>
+        <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="6.25" fill="none" stroke="currentColor" stroke-width="1.7" />
+          <path d="M16 16.5 20 20.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+        </svg>
+        <input
+          id="q"
+          type="search"
+          placeholder="搜索国家、城市或景点"
+          autocomplete="off"
+          role="combobox"
+          aria-expanded="false"
+          aria-controls="results"
+          aria-autocomplete="list"
+        />
+        <ul id="results" role="listbox" hidden></ul>
+      </form>
+
+      <div class="actions">
+        <button type="button" id="rotate" class="glass-btn is-on" aria-pressed="true">自转</button>
+        <button type="button" id="reset" class="glass-btn" title="回到全球视角">全球</button>
+      </div>
+    </header>
+
+    <nav class="dock glass" aria-label="已上线目的地">
+      <p class="dock-label" id="dock-label">已上线</p>
+      <div class="chips" id="chips"></div>
+    </nav>
+
+    <footer class="hud">
+      <p>拖拽旋转 · 滚轮缩放 · 点击国家</p>
+      <p class="legend"><i></i>暖色国家已有指南</p>
+      <p class="credit">国界 Natural Earth · 地表影像 NASA</p>
+    </footer>
+
+    <aside id="panel" class="panel glass" aria-hidden="true" inert aria-labelledby="panel-title"></aside>
+    <p id="live" class="sr-only" aria-live="polite"></p>
+
+    <div id="loader" role="status">
+      <div class="loader-card glass">
+        <div class="mini-planet" aria-hidden="true"><span></span></div>
+        <p id="loader-title">正在把云层拨开</p>
+        <p id="loader-sub" class="loader-sub">地球、国界与二十国指南</p>
+        <button type="button" id="retry" class="glass-btn" hidden>重新加载</button>
+      </div>
+    </div>
+
+    <noscript>
+      <p class="noscript">需要启用 JavaScript 才能转动这颗地球。</p>
+    </noscript>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
